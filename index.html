@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>待办事项</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f7f7fb; color: #222; max-width: 560px; margin: 40px auto; }
+    input { padding: 8px; width: 60%; }
+    button { padding: 8px 14px; }
+    li { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <h1>待办事项</h1>
+  <input id="todo" placeholder="要做什么？">
+  <button onclick="addTodo()">添加待办</button>
+  <ul id="list"></ul>
+  <script>
+    const todos = [];
+    function addTodo() {
+      const input = document.querySelector('#todo');
+      const text = input.value.trim();
+      if (!text) return;
+      todos.push({ text: text, done: false });
+      input.value = '';
+      render();
+    }
+    function render() {
+      document.querySelector('#list').innerHTML = todos
+        .map(t => `<li>${t.done ? '✅' : '⬜'} ${t.text}</li>`)
+        .join('');
+    }
+  </script>
+</body>
+</html>
