@@ -35,6 +35,10 @@
         .map(t => `<li>${t.done ? '✅' : '⬜'} ${t.text}</li>`)
         .join('');
     }
-  </script>
+  function clearDone() {
+  const done = todos.filter(t => t.done);
+  // TODO: 还没想好怎么从 todos 里删除
+}
+</script>
 </body>
 </html>
